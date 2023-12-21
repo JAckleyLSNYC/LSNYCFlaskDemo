@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+	  <link rel="icon" href="/static/img/favicon/favicon.ico" type="image/x-icon">
+      <link id="theme" rel="stylesheet" type="text/css" href="/static/main.css">
+	  
+
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+	
+
+		<script>
+    
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    
+    
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        if (currentTheme === 'goth') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'goth');
+            localStorage.setItem('theme', 'goth');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'main');
+            localStorage.setItem('theme', 'main');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+	   </script>
+    </body>
+</html>
